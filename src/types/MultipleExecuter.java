@@ -1,5 +1,5 @@
 package types;
 
-public interface MultipleExecuter extends basicBlock{
+public interface MultipleExecuter extends BasicBlock{
 	public FlowData execute(FlowData[] data);
 }
