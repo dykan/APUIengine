@@ -1,5 +1,5 @@
 package types;
 
-public interface Executer extends BasicBlock{
+public interface Executer extends BasicCommand{
 	public FlowData execute(FlowData data);
 }

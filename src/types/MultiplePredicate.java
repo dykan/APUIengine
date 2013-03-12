@@ -1,5 +1,5 @@
 package types;
 
-public interface MultiplePredicate extends BasicBlock{
+public interface MultiplePredicate extends BasicCommand{
 	public Boolean execute(FlowData data);
 }
