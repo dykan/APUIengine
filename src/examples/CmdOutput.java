@@ -1,12 +1,31 @@
 package examples;
 
+import types.Executer;
 import types.FlowData;
-import types.Output;
 
-public class CmdOutput implements Output {
+
+public class CmdOutput implements Executer {
 
 	@Override
-	public void write(FlowData data) {
-		System.out.println(data);
+	public String getLabel() {
+		return "OUTPUT";
 	}
+
+	@Override
+	public Class[] getInputTypes() {
+		return new Class[]{String.class};
+	}
+
+	@Override
+	public Class getOutput() {
+		return String.class;
+	}
+
+	@Override
+	public FlowData execute(FlowData data) {
+		System.out.println(data.getData().toString());
+		return data;
+	}
+
+
 }

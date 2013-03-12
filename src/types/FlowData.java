@@ -1,9 +1,13 @@
 package types;
 
 public class FlowData {
-	public String data;
+	private Object data;
 	
-	public FlowData(String data) {
+	public FlowData(Object data) {
 		this.data = data;
+	}
+	
+	public Object getData(){
+		return data;
 	}
 }
