@@ -7,6 +7,6 @@ public class CmdOutput implements Output {
 
 	@Override
 	public void write(FlowData data) {
-		System.out.println(data);
+		System.out.println(data.data);
 	}
 }
