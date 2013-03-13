@@ -27,7 +27,7 @@ public class ReturningString implements Executer {
 
 	@Override
 	public FlowData execute(FlowData data) {
-		return (FlowData)(Object)givenString;
+		return new FlowData(givenString);
 	}
 
 	@Override

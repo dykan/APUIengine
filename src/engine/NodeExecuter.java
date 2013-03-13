@@ -10,7 +10,7 @@ public class NodeExecuter extends NodeCommand{
 		// TODO Auto-generated constructor stub
 	}
 
-	ArrayList<NodeCommand> outEdges;
+	ArrayList<NodeCommand> outEdges = new ArrayList<NodeCommand>();
 
 	public void addNext(NodeCommand curr) {
 		outEdges.add(curr);

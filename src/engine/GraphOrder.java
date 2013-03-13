@@ -5,16 +5,21 @@ import generated.Flow;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import types.Predicate;
 
 public class GraphOrder {
 	
 	private GraphCommand graph;
 	private Queue<NodeCommand> queue;
 	private Set<NodeCommand> evaluated;
-
+	private NodePredicate lastPredicate = null;
 	public GraphOrder(GraphCommand graph) {
 		this.graph = graph;
 		this.evaluated = new HashSet<>();
+		queue = new LinkedBlockingQueue<NodeCommand>();
 		this.fillStarts();
 	}
 	
@@ -23,6 +28,18 @@ public class GraphOrder {
 	}
 
 	public NodeCommand getNext() {
+		// check if we are waiting for answer from predicate
+		if (lastPredicate !=null){
+			if(lastPredicate.getAnswer())
+			{
+				this.queue.add(lastPredicate.getTrueCommand());
+			}
+			else
+			{
+				this.queue.add(lastPredicate.getFalseCommand());
+			}
+			lastPredicate = null;
+		}
 		NodeCommand current = queue.poll();
 		if(NodeExecuter.class.isInstance(current))
 		{
@@ -37,15 +54,7 @@ public class GraphOrder {
 		}
 		else if(NodePredicate.class.isInstance(current))
 		{
-			NodePredicate currentPredicate = ((NodePredicate)current);
-			if(currentPredicate.getAnswer())
-			{
-				this.queue.add(currentPredicate.getTrueCommand());
-			}
-			else
-			{
-				this.queue.add(currentPredicate.getFalseCommand());
-			}
+			lastPredicate = (NodePredicate)current;
 		}
 		
 		return current;
