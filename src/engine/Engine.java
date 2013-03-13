@@ -45,11 +45,11 @@ public class Engine {
 		
 	}
 	
-	public FlowData run(){
-				
+	public FlowData run(){	
 		// init graph
 		GraphOrder order = new GraphOrder(flow);
 		
+		// get root
 		NodeCommand curr = order.getNext();
 		
 		while (curr != null){

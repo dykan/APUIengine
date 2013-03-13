@@ -1,7 +1,10 @@
 package engine;
 
+
 import generated.Flow;
 import generated.Flow.Command;
+import genrated.Flow;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +18,7 @@ public class GraphCommand {
 	ImplGetter getter= new ImplGetter();
 	Flow flow;
 	
+
 	public static String CONDITION_ATTR = "condition";
 	
 	public GraphCommand(Flow flow) {
@@ -46,7 +50,6 @@ public class GraphCommand {
 				currGraphNode.addPrev(prev);
 			}
 		}
-		
 	}
 	
 	private NodeCommand createSonById(Integer id) {
