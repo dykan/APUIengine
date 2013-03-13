@@ -13,6 +13,11 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import types.BasicCommand;
+import types.Executer;
+import types.FlowData;
+import types.Predicate;
+
 
 public class Engine {
 	Flow flow;
@@ -44,15 +49,35 @@ public class Engine {
 			flow = (Flow)((JAXBElement)unmarshaller.unmarshal(xmlSource,Flow.class)).getValue();
 		} catch (JAXBException e){
 			System.out.println("STOP");
+		}	
+		
+		
+	}
+	
+	public FlowData run(){
+		
+		// init data
+		FlowData data = new FlowData(null);
+		
+		// init grapg
+		GraphOrder order = new GraphOrder(flow);
+		
+		NodeCommand curr = order.getNext();
+		
+		while (curr != null){
+			BasicCommand impl = curr.getImpl();
+			// check if exec or predicate
+			if (impl instanceof Executer){
+				data = ((Executer)impl).execute(data);
+			} else if (impl instanceof Predicate){
+				order.setAnswer(((Predicate)impl).execute(data));
+			}
+			
+			order.setExecuted();
+			curr = order.getNext();
 		}
 		
 		
-		
-		Command c=null;
-		c.getId();
-		c.getNext().getId();
-		
-		
-		
+		return data;
 	}
 }
