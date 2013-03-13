@@ -82,7 +82,7 @@ public class Engine {
 				dataMap.put(curr.getId(), null);
 			}
 			
-			
+			curr.setExecuted(true);
 			curr = order.getNext();
 		}
 		
