@@ -14,7 +14,7 @@ public class Flow {
 		this.output = output;
 	}
 
-	public void execute(FlowData input) {
+	public void execute() {
 		FlowData data = this.input.Create();
 		for (Executer current : flow) {
 			data = current.execute(data);
