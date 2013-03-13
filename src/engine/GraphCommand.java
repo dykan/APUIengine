@@ -1,6 +1,6 @@
 package engine;
 
-import genrated.Flow;
+import generated.Flow;
 
 import java.util.HashMap;
 

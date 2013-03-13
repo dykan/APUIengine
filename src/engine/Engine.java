@@ -1,8 +1,8 @@
 package engine;
 
 import engine.GraphOrder;
-import genrated.Flow;
-import genrated.Flow.Command;
+import generated.Flow;
+
 
 import java.io.StringReader;
 import java.util.List;

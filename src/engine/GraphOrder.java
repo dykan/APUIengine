@@ -1,10 +1,9 @@
 package engine;
 
-import genrated.Flow;
 
 public class GraphOrder {
 
-	public GraphOrder(Flow flow) {
+	public GraphOrder(generated.Flow flow) {
 		// TODO Auto-generated constructor stub
 	}
 
