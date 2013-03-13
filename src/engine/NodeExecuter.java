@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import types.BasicCommand;
 
 public class NodeExecuter extends NodeCommand{
-	public NodeExecuter(BasicCommand command) {
-		super(command);
+	public NodeExecuter(BasicCommand command, Integer id) {
+		super(command, id);
 		// TODO Auto-generated constructor stub
 	}
 

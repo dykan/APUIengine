@@ -5,6 +5,7 @@ import generated.Flow;
 
 
 import java.io.StringReader;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -22,6 +23,8 @@ import types.Predicate;
 public class Engine {
 	Flow flow;
 	
+	HashMap<Integer, FlowData> dataMap = new HashMap<Integer, FlowData>();
+	
 	public Engine(String xml){
 		StringReader xmlReader = new StringReader(xml);
 		StreamSource xmlSource = new StreamSource(xmlReader);
@@ -34,17 +37,18 @@ public class Engine {
 		}	
 		
 		
+		
 	}
 	
 	public FlowData run(){
-		// init data
-		FlowData data = new FlowData(null);
-		
+				
 		// init graph
 		GraphOrder order = new GraphOrder(flow);
 		
-		
 		NodeCommand curr = order.getNext();
+		// init data
+		FlowData data = new FlowData(null);
+		dataMap.put(curr.g, value)
 		
 		while (curr != null){
 			BasicCommand impl = curr.getImpl();

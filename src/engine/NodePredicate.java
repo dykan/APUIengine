@@ -9,8 +9,8 @@ public class NodePredicate extends NodeCommand{
 	NodeCommand falseCommand;
 	boolean answer;
 	
-	public NodePredicate(BasicCommand command) {
-		super(command);
+	public NodePredicate(BasicCommand command, Integer id) {
+		super(command, id);
 	}
 
 	public NodeCommand getTrueCommand() {
