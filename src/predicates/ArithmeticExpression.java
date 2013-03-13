@@ -1,5 +1,6 @@
-package examples;
+package predicates;
 
+import examples.GeneralUtils;
 import types.BasicCommand;
 import types.FlowData;
 import types.Predicate;

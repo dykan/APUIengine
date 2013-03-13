@@ -1,6 +1,8 @@
-package examples;
+package predicates;
 
 import java.util.ArrayList;
+
+import examples.GeneralUtils;
 
 import types.FlowData;
 import types.Predicate;
