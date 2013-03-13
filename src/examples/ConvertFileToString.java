@@ -57,7 +57,7 @@ public class ConvertFileToString implements Executer {
 				e.printStackTrace();
 			}
 	    }
-		return (FlowData)(Object)everything;
+		return new FlowData(everything);
 	}
 
 	@Override

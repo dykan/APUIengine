@@ -27,7 +27,7 @@ public class ReturningNumber implements Executer {
 
 	@Override
 	public FlowData execute(FlowData data) {
-		return (FlowData)(Object)number;
+		return new FlowData(number);
 	}
 
 	@Override

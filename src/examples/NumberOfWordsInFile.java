@@ -27,7 +27,7 @@ public class NumberOfWordsInFile implements Executer{
                 numberOfWords++;
             } 
         }
-		return (FlowData)(Object)numberOfWords;
+		return new FlowData(numberOfWords);
 	}
 
 	@Override
