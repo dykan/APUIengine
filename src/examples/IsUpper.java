@@ -23,9 +23,4 @@ public class IsUpper implements Predicate {
 		return new Class[]{String.class};
 	}
 
-	@Override
-	public Class getOutputType() {
-		return String.class;
-	}
-
 }
