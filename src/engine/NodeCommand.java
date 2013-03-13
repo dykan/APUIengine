@@ -1,3 +1,4 @@
+
 package engine;
 
 import java.util.ArrayList;
@@ -5,8 +6,6 @@ import java.util.ArrayList;
 import types.BasicCommand;
 
 public abstract class NodeCommand {
-
-	
 	ArrayList<NodeCommand> prevEdges;
 	BasicCommand command;
 	
@@ -15,7 +14,6 @@ public abstract class NodeCommand {
 		prevEdges = new ArrayList<>();
 	}
 
-	
 	public BasicCommand getImpl() {
 		return this.command;
 	}

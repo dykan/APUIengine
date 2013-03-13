@@ -1,19 +1,19 @@
 package engine;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract class GraphCommand {
-	ArrayList<NodeCommand> vertices;
+public class GraphCommand {
+	HashMap<Integer, NodeCommand> vertices;
 	
 	public GraphCommand() {
-		vertices = new ArrayList<>();
+		vertices = new HashMap<>();
 	}
 	
 	public void addVertex(NodeCommand newNode) {
-		vertices.add(newNode);
+		vertices.put(1, newNode);
 	}
 	
 	public void addEdge(NodeCommand srcNode, NodeCommand dstNode) {
-		
+		//srcNode.addPrev(srcNode.);
 	}
 }
