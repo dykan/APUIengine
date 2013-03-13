@@ -21,25 +21,6 @@ import types.Predicate;
 
 public class Engine {
 	Flow flow;
-	/*Input input;
-	Output output;
-	ArrayList<Executer> flow;
-	
-	public Flow(Input input, ArrayList<Executer> flow, Output output) {
-		this.input = input;
-		this.flow = flow;
-		this.output = output;
-	}
-
-	public void execute(FlowData input) {
-		FlowData data = this.input.Create();
-		for (Executer current : flow) {
-			data = current.execute(data);
-		}
-		
-		output.write(data);
-	}*/
-	
 	public Engine(String xml){
 		StringReader xmlReader = new StringReader(xml);
 		StreamSource xmlSource = new StreamSource(xmlReader);
@@ -62,7 +43,7 @@ public class Engine {
 		// init grapg
 		GraphOrder order = new GraphOrder(flow);
 		
-		NodeCommand curr = order.getNext();
+		CommandNode curr = order.getNext();
 		
 		while (curr != null){
 			BasicCommand impl = curr.getImpl();

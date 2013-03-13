@@ -1,10 +1,6 @@
 package engine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import genrated.Flow;
-import genrated.Flow.Command;
 
 public class GraphOrder {
 
@@ -12,7 +8,7 @@ public class GraphOrder {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NodeCommand getNext() {
+	public CommandNode getNext() {
 		// TODO Auto-generated method stub
 		return null;
 	}
