@@ -8,7 +8,7 @@ public class CmdOutput implements Executer {
 
 	@Override
 	public String getLabel() {
-		return "OUTPUT";
+		return "output";
 	}
 
 	@Override

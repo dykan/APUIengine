@@ -38,29 +38,17 @@ public class GraphOrder {
 		else if(NodePredicate.class.isInstance(current))
 		{
 			NodePredicate currentPredicate = ((NodePredicate)current);
-			/*
 			if(currentPredicate.getAnswer())
 			{
-				this.queue.add(currentPredicate.getTrue());
+				this.queue.add(currentPredicate.getTrueCommand());
 			}
 			else
 			{
-				this.queue.add(currentPredicate.getFalse());
+				this.queue.add(currentPredicate.getFalseCommand());
 			}
-			*/
 		}
 		
 		return current;
-	}
-
-	public void setAnswer(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setExecuted() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private void fillStarts() {
