@@ -42,8 +42,8 @@ public class Engine {
 		FlowData data = new FlowData(null);
 		
 		// init grapg
-		GraphOrder order = new GraphOrder(flow);
-		
+		//GraphOrder order = new GraphOrder(flow);
+		GraphOrder order = null;
 		NodeCommand curr = order.getNext();
 		
 		while (curr != null){
