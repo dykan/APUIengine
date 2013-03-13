@@ -15,7 +15,7 @@ public class IsUpper implements Predicate {
 
 	@Override
 	public String getLabel() {
-		return "ToUpper";
+		return "Is Upper";
 	}
 
 	@Override
