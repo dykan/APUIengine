@@ -32,7 +32,7 @@ public class ArithmeticExpression implements Predicate {
 
 	@Override
 	public Class[] getInputTypes() {
-		return new Class[]{int.class, String.class};
+		return new Class[]{int.class};
 	}
 	
 	@Override

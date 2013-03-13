@@ -35,10 +35,6 @@ public class RecordsNumFromQuery implements Predicate {
 	public Class[] getInputTypes() {
 		return new Class[]{ArrayList.class};
 	}
-	
-	public Class[] getOutputTypes() {
-		return new Class[]{int.class};
-	}
 
 	@Override
 	public boolean execute(FlowData data) {
