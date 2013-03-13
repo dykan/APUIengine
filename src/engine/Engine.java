@@ -37,12 +37,12 @@ public class Engine {
 	}
 	
 	public FlowData run(){
-		
 		// init data
 		FlowData data = new FlowData(null);
 		
-		// init grapg
+		// init graph
 		GraphOrder order = new GraphOrder(flow);
+		
 		
 		NodeCommand curr = order.getNext();
 		
@@ -52,10 +52,11 @@ public class Engine {
 			if (impl instanceof Executer){
 				data = ((Executer)impl).execute(data);
 			} else if (impl instanceof Predicate){
-				order.setAnswer(((Predicate)impl).execute(data));
+				Predicate predicate = (Predicate)impl;
+				//predicate.setAnswer(predicate.execute(data));
 			}
 			
-			order.setExecuted();
+			
 			curr = order.getNext();
 		}
 		

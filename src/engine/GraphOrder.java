@@ -17,10 +17,6 @@ public class GraphOrder {
 		
 	}
 
-	public void setExecuted() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

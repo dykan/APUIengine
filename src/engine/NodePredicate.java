@@ -7,6 +7,7 @@ public class NodePredicate extends NodeCommand{
 	
 	NodeCommand trueCommand;
 	NodeCommand falseCommand;
+	boolean answer;
 	
 	public NodePredicate(BasicCommand command) {
 		super(command);
@@ -26,6 +27,14 @@ public class NodePredicate extends NodeCommand{
 
 	public void setFalseCommand(NodeCommand falseCommand) {
 		this.falseCommand = falseCommand;
+	}
+	
+	public void setAnswer(boolean answer){
+		this.answer=answer;
+	}
+	
+	public boolean getAnswer(){
+		return answer;
 	}
 	
 
