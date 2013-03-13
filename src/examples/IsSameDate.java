@@ -7,7 +7,7 @@ import types.Predicate;
 
 public class IsSameDate implements Predicate{
 	
-	public Date date;
+	public String strDate;
 
 	@Override
 	public String getLabel() {
@@ -15,23 +15,24 @@ public class IsSameDate implements Predicate{
 		return "Is it the same date?";
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	@Override
 	public Class[] getInputTypes() {
 		return new Class[]{Date.class};
 	}
 
+	public String getStrDate() {
+		return strDate;
+	}
+
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
+	}
+
 	@Override
-	public Boolean execute(FlowData data) {
+	public boolean execute(FlowData data) {
+		Date givenDate = Date.valueOf(strDate);
 		Date dateData = Date.valueOf(data.toString());
-		return dateData.equals(date);
+		return dateData.equals(givenDate);
 	}
 
 }

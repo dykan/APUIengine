@@ -29,7 +29,7 @@ public class IsSameString implements Predicate{
 	}
 
 	@Override
-	public Boolean execute(FlowData data) {
+	public boolean execute(FlowData data) {
 		String strData = data.toString();
 		return strData.equals(givenString);
 	}

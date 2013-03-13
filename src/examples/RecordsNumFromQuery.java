@@ -41,7 +41,7 @@ public class RecordsNumFromQuery implements Predicate {
 	}
 
 	@Override
-	public Boolean execute(FlowData data) {
+	public boolean execute(FlowData data) {
 		ArrayList<Object> arrData = new ArrayList<Object>();
 		arrData = (ArrayList<Object>) data.getData();
 		int intNumber = Integer.valueOf(number);

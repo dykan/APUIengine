@@ -8,7 +8,7 @@ import types.Predicate;
 public class IsUpper implements Predicate {
 
 	@Override
-	public Boolean execute(FlowData data) {
+	public boolean execute(FlowData data) {
 		String strData = (String) data.getData();
 		return (strData.matches("[A-Z]"));
 	}
