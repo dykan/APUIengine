@@ -18,7 +18,7 @@ public class CmdInput implements Executer {
 	}
 
 	@Override
-	public Class getOutput() {
+	public Class getOutputType() {
 		return  String.class;
 	}
 
