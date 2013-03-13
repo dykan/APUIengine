@@ -9,7 +9,7 @@ public class CmdInput implements Executer {
 
 	@Override
 	public String getLabel() {
-		return "INPUT";
+		return "input";
 	}
 
 	@Override

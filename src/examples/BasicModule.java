@@ -8,5 +8,7 @@ public class BasicModule extends Module {
 		this.add(new CmdOutput());
 		this.add(new IsLower());
 		this.add(new IsUpper());
+		this.add(new IsSameString());
+		this.add(new ReturningNumber());
 	}
 }
