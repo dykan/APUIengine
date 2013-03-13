@@ -1,12 +1,14 @@
 package engine;
 
+import genrated.Flow;
+
 import java.util.HashMap;
 
 public class GraphCommand {
 	HashMap<Integer, NodeCommand> vertices;
 	
-	public GraphCommand() {
-		vertices = new HashMap<>();
+	public GraphCommand(Flow flow) {
+		vertices = new HashMap<Integer, NodeCommand>();
 	}
 	
 	public void addVertex(NodeCommand newNode) {
