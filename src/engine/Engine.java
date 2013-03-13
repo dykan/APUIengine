@@ -1,14 +1,12 @@
 package engine;
 
+import engine.GraphOrder;
 import genrated.Flow;
 import genrated.Flow.Command;
-import genrated.ObjectFactory;
 
 import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -48,8 +46,7 @@ public class Engine {
 			System.out.println("STOP");
 		}
 		
-		List<Command> commands = 
-				GraphOrder.orginizeCommands(flow.getCommand());
+		
 		
 		Command c=null;
 		c.getId();
