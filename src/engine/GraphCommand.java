@@ -80,7 +80,7 @@ public class GraphCommand {
 		NodeCommand newNode = vertices.get(newXmlCommand.getId());
 		if(newNode == null){
 			// create the node
-			BasicCommand impl = getter.getImplFromType(newXmlCommand);
+			BasicCommand impl = getter.getImplByNode(newXmlCommand);
 			if (isPredicate(newXmlCommand)){
 				newNode = new NodePredicate(impl, newXmlCommand.getId());	
 			} else {
