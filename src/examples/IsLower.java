@@ -8,7 +8,7 @@ import types.Predicate;
 public class IsLower implements Predicate {
 
 	@Override
-	public Boolean execute(FlowData data) {
+	public boolean execute(FlowData data) {
 		String strData = (String) data.getData();
 		return (strData.matches("[a-z]"));
 	}
