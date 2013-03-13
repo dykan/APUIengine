@@ -1,7 +1,5 @@
 package examples;
 
-import java.util.ArrayList;
-
 import types.FlowData;
 import types.Predicate;
 
