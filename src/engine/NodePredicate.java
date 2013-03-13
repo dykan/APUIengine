@@ -1,7 +1,6 @@
 package engine;
 
 import types.BasicCommand;
-import engine.NodeCommand;
 
 public class NodePredicate extends NodeCommand{
 	
