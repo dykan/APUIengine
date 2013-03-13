@@ -12,6 +12,6 @@ public class BasicModule extends Module {
 		this.add(new IsLower());
 		this.add(new IsUpper());
 		this.add(new IsSameString());
-		this.add(new ReturningNumber());
+		this.add(new ReturningString());
 	}
 }

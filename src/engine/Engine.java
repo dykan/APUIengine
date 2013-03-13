@@ -2,10 +2,12 @@ package engine;
 
 import generated.Flow;
 
+import java.io.File;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -27,8 +29,8 @@ public class Engine {
 	
 	HashMap<Integer, FlowData> dataMap = new HashMap<Integer, FlowData>();
 	
-	public Engine(String xml){
-		StringReader xmlReader = new StringReader(xml);
+	public Engine(String file){
+		/*StringReader xmlReader = new StringReader(xml);
 		StreamSource xmlSource = new StreamSource(xmlReader);
 		try{
 			JAXBContext content = JAXBContext.newInstance(Flow.class);
@@ -36,10 +38,8 @@ public class Engine {
 			flow = (Flow)((JAXBElement)unmarshaller.unmarshal(xmlSource,Flow.class)).getValue();
 		} catch (JAXBException e){
 			System.out.println("STOP");
-		}	
-		
-		
-		
+		}	*/
+		flow = JAXB.unmarshal(new File(file), Flow.class);
 	}
 	
 	public FlowData run(){	
@@ -56,8 +56,8 @@ public class Engine {
 			// check if exec or predicate
 			if (impl instanceof Executer){
 				FlowData data;
-				// simple or root
-				if (curr.getPrevs().size() <= 1){
+				// simple or root or end
+				if (curr.getPrevs().size() <= 1 || curr.getId().equals(OUTPUT_POINT)){
 					data = ((Executer)impl).execute(fatherData[0]);
 				// multiple data  
 				} else {
@@ -77,12 +77,12 @@ public class Engine {
 					result = ((MultiplePredicate)impl).execute(fatherData);
 				}
 				// save answer
-				((NodePredicate)impl).setAnswer(result);
+				((NodePredicate)curr).setAnswer(result);
 				// save data as null (if you want the data do a union)
 				dataMap.put(curr.getId(), null);
 			}
 			
-			
+			curr.setExecuted(true);
 			curr = order.getNext();
 		}
 		
@@ -102,6 +102,7 @@ public class Engine {
 			list.add(dataMap.get(father.getId()));
 		}
 		
-		return (FlowData[]) list.toArray();
+		FlowData[] array = new FlowData[list.size()];
+		return list.toArray(array);
 	}
 }

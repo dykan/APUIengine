@@ -1,0 +1,46 @@
+<flow>
+    <command id="1" type="input" x="1" y="2">
+        <prev/>
+        <next>
+            <id>2</id>
+        </next>
+		<attributes>
+			<attr name="message" value="enter password"/>
+		</attributes>
+    </command>
+    <command id="2" type="Is it the same string?" x="1" y="2">
+        <prev>
+            <id>1</id>
+        </prev>
+        <next>
+            <id>3</id>
+			<id>4</id>
+        </next>
+        <attributes>
+            <attr name="string" value="shalom"/>
+			<attr name="condition" value="true"/>
+        </attributes>
+    </command>
+	 <command id="3" type="Get the string I've entered" x="1" y="2">
+        <prev>
+			<id>2</id>
+		</prev>
+        <next>
+            <id>0</id>
+        </next>
+		<attributes>
+            <attr name="GivenString" value="welcome"/>
+        </attributes>
+	</command>
+	 <command id="4" type="Get the string I've entered" x="1" y="2">
+        <prev>
+			<id>2</id>
+		</prev>
+        <next>
+            <id>0</id>
+        </next>
+		<attributes>
+            <attr name="GivenString" value="tipesh"/>
+        </attributes>
+	</command>
+</flow>

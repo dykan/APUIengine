@@ -7,6 +7,8 @@ import types.FlowData;
 
 public class CmdInput implements Executer {
 
+	String message;
+	
 	@Override
 	public String getLabel() {
 		return "input";
@@ -24,9 +26,14 @@ public class CmdInput implements Executer {
 
 	@Override
 	public FlowData execute(FlowData data) {
+		System.out.println(message);
 		Scanner sc = new Scanner(System.in);
 		String name = sc.nextLine();
 		return new FlowData(name);
+	}
+	
+	public void setMessage(String message){
+		this.message=message;
 	}
 
 }
