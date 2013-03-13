@@ -1,5 +1,7 @@
 package engine;
 
+import genrated.Flow;
+
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
@@ -14,6 +16,10 @@ public class GraphOrder {
 		this.graph = graph;
 		this.evaluated = new HashSet<>();
 		this.fillStarts();
+	}
+	
+	public GraphOrder(Flow flow) {
+		this(new GraphCommand(flow));
 	}
 
 	public NodeCommand getNext() {
