@@ -45,8 +45,8 @@
 	</command>
 	<command id="5" type="Unify" x="1" y="2">
 		<prev>
+			<id>3</id>
 			<id>4</id>
-			<id>5</id>
 		</prev>
         <next>
             <id>0</id>
