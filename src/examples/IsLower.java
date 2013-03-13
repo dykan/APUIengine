@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import types.FlowData;
 import types.Predicate;
 
-public class IsUpper implements Predicate {
+public class IsLower implements Predicate {
 
 	@Override
 	public Boolean execute(FlowData data) {
 		String strData = (String) data.getData();
-		return (strData.matches("[A-Z]"));
+		return (strData.matches("[a-z]"));
 	}
 
 	@Override
 	public String getLabel() {
-		return "ToUpper";
+		return "ToLower";
 	}
 
 	@Override
