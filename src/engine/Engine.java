@@ -21,6 +21,7 @@ import types.Predicate;
 
 public class Engine {
 	Flow flow;
+	
 	public Engine(String xml){
 		StringReader xmlReader = new StringReader(xml);
 		StreamSource xmlSource = new StreamSource(xmlReader);
@@ -43,7 +44,7 @@ public class Engine {
 		// init grapg
 		GraphOrder order = new GraphOrder(flow);
 		
-		CommandNode curr = order.getNext();
+		NodeCommand curr = order.getNext();
 		
 		while (curr != null){
 			BasicCommand impl = curr.getImpl();

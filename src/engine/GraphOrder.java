@@ -8,7 +8,7 @@ public class GraphOrder {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommandNode getNext() {
+	public NodeCommand getNext() {
 		// TODO Auto-generated method stub
 		return null;
 	}
