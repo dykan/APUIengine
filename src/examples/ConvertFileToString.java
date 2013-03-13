@@ -32,32 +32,7 @@ public class ConvertFileToString implements Executer {
 
 	@Override
 	public FlowData execute(FlowData data) {
-		String everything = "";
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(fileName));
-	        StringBuilder sb = new StringBuilder();
-	        String line = br.readLine();
-
-	        while (line != null) {
-	            sb.append(line);
-	            sb.append("\n");
-	            line = br.readLine();
-	        }
-	        everything = sb.toString();
-	    } catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-	        try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
-		return new FlowData(everything);
+		return new FlowData(GeneralUtils.convertFileToString(fileName));
 	}
 
 	@Override
