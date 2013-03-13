@@ -1,6 +1,5 @@
 package types;
 
-import java.util.ArrayList;
 
 public interface BasicCommand {
 	public String getLabel();

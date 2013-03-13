@@ -1,11 +1,10 @@
 package engine;
 
-import engine.GraphOrder;
-import genrated.Flow;
-import genrated.Flow.Command;
+import generated.Flow;
 
 import java.io.StringReader;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -16,11 +15,17 @@ import javax.xml.transform.stream.StreamSource;
 import types.BasicCommand;
 import types.Executer;
 import types.FlowData;
+import types.MultipleExecuter;
+import types.MultiplePredicate;
 import types.Predicate;
 
 
 public class Engine {
+	private static final Integer OUTPUT_POINT = 0;
+
 	Flow flow;
+	
+	HashMap<Integer, FlowData> dataMap = new HashMap<Integer, FlowData>();
 	
 	public Engine(String xml){
 		StringReader xmlReader = new StringReader(xml);
@@ -34,32 +39,69 @@ public class Engine {
 		}	
 		
 		
+		
 	}
 	
-	public FlowData run(){
+	public FlowData run(){	
+		// init graph
+		GraphOrder order = new GraphOrder(flow);
 		
-		// init data
-		FlowData data = new FlowData(null);
-		
-		// init grapg
-		//GraphOrder order = new GraphOrder(flow);
-		GraphOrder order = null;
+		// get root
 		NodeCommand curr = order.getNext();
 		
 		while (curr != null){
+			FlowData[] fatherData = getFatherData(curr);
 			BasicCommand impl = curr.getImpl();
+			
 			// check if exec or predicate
 			if (impl instanceof Executer){
-				data = ((Executer)impl).execute(data);
+				FlowData data;
+				// simple or root
+				if (curr.getPrevs().size() <= 1){
+					data = ((Executer)impl).execute(fatherData[0]);
+				// multiple data  
+				} else {
+					data = ((MultipleExecuter)impl).execute(fatherData);
+				}
+				
+				// save result
+				dataMap.put(curr.getId(), data);
+				
 			} else if (impl instanceof Predicate){
-				order.setAnswer(((Predicate)impl).execute(data));
+				boolean result;
+				// simple or root
+				if (curr.getPrevs().size() <= 1){
+					result = ((Predicate)impl).execute(fatherData[0]);
+				// multiple data  
+				} else {
+					result = ((MultiplePredicate)impl).execute(fatherData);
+				}
+				// save answer
+				((NodePredicate)impl).setAnswer(result);
+				// save data as null (if you want the data do a union)
+				dataMap.put(curr.getId(), null);
 			}
 			
-			order.setExecuted();
+			
 			curr = order.getNext();
 		}
 		
+		// return the data in the output
+		return dataMap.get(OUTPUT_POINT);
+
+	}
+
+	private FlowData[] getFatherData(NodeCommand curr) {
 		
-		return data;
+		// root TODO: do i need this??
+		if(curr.getPrevs().size() == 0){
+			return new FlowData[]{null};
+		}
+		ArrayList<FlowData> list = new ArrayList<FlowData>();
+		for(NodeCommand father : curr.getPrevs()){
+			list.add(dataMap.get(father.getId()));
+		}
+		
+		return (FlowData[]) list.toArray();
 	}
 }
