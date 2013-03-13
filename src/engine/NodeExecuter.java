@@ -11,4 +11,8 @@ public class NodeExecuter extends NodeCommand{
 	}
 
 	ArrayList<NodeCommand> outEdges;
+
+	public void addNext(NodeCommand curr) {
+		outEdges.add(curr);
+	}
 }

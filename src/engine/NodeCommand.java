@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import types.BasicCommand;
 
 public abstract class NodeCommand {
-
-	
 	ArrayList<NodeCommand> prevEdges;
 	BasicCommand command;
 	
