@@ -5,10 +5,7 @@ import generated.Flow;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-
-import types.Predicate;
 
 public class GraphOrder {
 	
@@ -67,7 +64,7 @@ public class GraphOrder {
 	
 	private boolean canRun(NodeCommand command)
 	{
-		if(command.executed)
+		if(evaluated.contains(command))
 		{
 			return true;
 		}
