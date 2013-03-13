@@ -11,7 +11,7 @@ public abstract class NodeCommand {
 	boolean executed;
 	int id;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
