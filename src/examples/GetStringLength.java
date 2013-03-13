@@ -27,7 +27,7 @@ public class GetStringLength implements Executer {
 
 	@Override
 	public FlowData execute(FlowData data) { 
-		return (FlowData)(Object)(givenString.length());
+		return new FlowData (givenString.length());
 	}
 
 	@Override

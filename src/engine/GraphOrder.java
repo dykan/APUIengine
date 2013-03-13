@@ -46,7 +46,7 @@ public class GraphOrder {
 			this.evaluated.add(current);
 			for(NodeCommand next : ((NodeExecuter)current).outEdges)
 			{
-				if(evaluated.containsAll(next.prevEdges))
+				if(this.canRun(next))
 				{
 					this.queue.add(next);
 				}
@@ -60,9 +60,36 @@ public class GraphOrder {
 		return current;
 	}
 	
+	private boolean isRoot(NodeCommand command)
+	{
+		return (command.prevEdges.isEmpty());
+	}
+	
+	private boolean canRun(NodeCommand command)
+	{
+		if(command.executed)
+		{
+			return true;
+		}
+		else if(isRoot(command))
+		{
+			return false;
+		}
+		else
+		{
+			for(NodeCommand prev : command.prevEdges)
+			{
+				if(!canRun(prev))
+					return false;
+			}
+			
+			return true;
+		}
+	}
+	
 	private void fillStarts() {
 		for (NodeCommand cmd : graph.vertices.values()) {
-			if(cmd.prevEdges.size() == 0) {
+			if(isRoot(cmd)) {
 				this.queue.add(cmd);
 			}
 		}

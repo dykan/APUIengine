@@ -1,6 +1,8 @@
-package examples;
+package predicates;
 
 import java.util.ArrayList;
+
+import examples.GeneralUtils;
 
 import types.FlowData;
 import types.Predicate;
@@ -34,10 +36,6 @@ public class RecordsNumFromQuery implements Predicate {
 	@Override
 	public Class[] getInputTypes() {
 		return new Class[]{ArrayList.class};
-	}
-	
-	public Class[] getOutputTypes() {
-		return new Class[]{int.class};
 	}
 
 	@Override

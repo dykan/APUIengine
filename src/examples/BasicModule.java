@@ -1,5 +1,8 @@
 package examples;
 
+import predicates.IsLower;
+import predicates.IsSameString;
+import predicates.IsUpper;
 import types.Module;
 
 public class BasicModule extends Module {

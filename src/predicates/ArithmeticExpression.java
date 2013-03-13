@@ -1,5 +1,6 @@
-package examples;
+package predicates;
 
+import examples.GeneralUtils;
 import types.BasicCommand;
 import types.FlowData;
 import types.Predicate;
@@ -32,7 +33,7 @@ public class ArithmeticExpression implements Predicate {
 
 	@Override
 	public Class[] getInputTypes() {
-		return new Class[]{int.class, String.class};
+		return new Class[]{int.class};
 	}
 	
 	@Override

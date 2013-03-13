@@ -22,7 +22,7 @@ public class RecordsNumFromQueryAndSaveData implements Executer{
 		ArrayList<Object> arrData = new ArrayList<Object>();
 		arrData = (ArrayList<Object>) data.getData();
 		Object numOfRows = arrData.size();
-		return (FlowData)numOfRows;
+		return new FlowData(numOfRows);
 	}
 
 	@Override
