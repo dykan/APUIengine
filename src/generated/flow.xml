@@ -21,26 +21,36 @@
 			<attr name="condition" value="true"/>
         </attributes>
     </command>
-	 <command id="3" type="Get the string I've entered" x="1" y="2">
-        <prev>
+	<command id="3" type="Get the string I've entered" x="1" y="2">
+    	<prev>
 			<id>2</id>
 		</prev>
         <next>
-            <id>0</id>
+            <id>5</id>
         </next>
 		<attributes>
             <attr name="GivenString" value="welcome"/>
         </attributes>
 	</command>
-	 <command id="4" type="Get the string I've entered" x="1" y="2">
-        <prev>
+	<command id="4" type="Get the string I've entered" x="1" y="2">
+		<prev>
 			<id>2</id>
 		</prev>
         <next>
-            <id>0</id>
+            <id>5</id>
         </next>
 		<attributes>
             <attr name="GivenString" value="tipesh"/>
         </attributes>
+	</command>
+	<command id="5" type="Unite strings" x="1" y="2">
+		<prev>
+			<id>3</id>
+			<id>4</id>
+		</prev>
+        <next>
+            <id>0</id>
+        </next>
+		<attributes />
 	</command>
 </flow>
