@@ -26,31 +26,21 @@
 			<id>2</id>
 		</prev>
         <next>
-            <id>5</id>
+            <id>0</id>
         </next>
 		<attributes>
             <attr name="GivenString" value="welcome"/>
         </attributes>
 	</command>
-	<command id="4" type="Get the string I've entered" x="1" y="2">
-		<prev>
-			<id>2</id>
-		</prev>
+	<command id="4" type="cmdOutput" x="1" y="2">
+        <prev>
+        	<id>2</id>
+        </prev>
         <next>
-            <id>5</id>
+            <id>1</id>
         </next>
 		<attributes>
-            <attr name="GivenString" value="tipesh"/>
-        </attributes>
-	</command>
-	<command id="5" type="Unite strings" x="1" y="2">
-		<prev>
-			<id>3</id>
-			<id>4</id>
-		</prev>
-        <next>
-            <id>0</id>
-        </next>
-		<attributes />
-	</command>
+			<attr name="message" value="wrong! try again"/>
+		</attributes>
+    </command>
 </flow>
