@@ -57,7 +57,7 @@ public class Engine {
 			if (curr instanceof NodeExecuter){
 				FlowData data;
 				// multiple data  
-				if (curr.getPrevs().size() > 1 || curr.getId().equals(OUTPUT_POINT)){
+				if (impl instanceof MultipleExecuter){
 					data = ((MultipleExecuter)impl).execute(fatherData);
 				// simple or root
 				} else {
