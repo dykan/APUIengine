@@ -27,4 +27,9 @@ public class UniteFiles implements MultipleExecuter {
 							GeneralUtils.convertFileToString(data[1].toString());
 		return new FlowData(uniteFiles);
 	}
+
+	@Override
+	public Class getOutputType() {
+		return String.class;
+	}
 }

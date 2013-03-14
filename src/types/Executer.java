@@ -1,6 +1,5 @@
 package types;
 
-public interface Executer extends BasicCommand{
+public interface Executer extends CommandOutputer{
 	public FlowData execute(FlowData data);
-	public Class getOutputType();
 }

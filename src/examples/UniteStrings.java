@@ -21,4 +21,9 @@ public class UniteStrings implements MultipleExecuter{
 		String unitedStrings = data[0].toString() + data[1].toString();
 		return null;
 	}
+
+	@Override
+	public Class getOutputType() {
+		return String.class;
+	}
 }
