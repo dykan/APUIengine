@@ -1,5 +1,6 @@
 package examples;
 
+import generated.Flow;
 import sun.security.util.Length;
 import types.Executer;
 import types.FlowData;
@@ -28,16 +29,22 @@ public class RemoveTextBetweenTriangles implements Executer{
 		String firstPart = "";
 		String secondPart = "";
 		int indexEnd;
+		int indexStart;
 		
 		for (int i = 0; i < strData.length(); i++){
 			if (strData.charAt(i) == '<') {
 				
 				indexEnd = i;
-				while (strData.charAt(indexEnd) != '>') {
+				while ((strData.charAt(indexEnd) != '>') && (i < strData.length())) {
 					indexEnd++;
 				}
 				
-				firstPart = strData.substring(0, i - 1);
+				indexStart = i;
+				if (indexStart != 0) {
+					indexStart --;
+				}
+				
+				firstPart = strData.substring(0, indexStart);
 				secondPart = strData.substring(indexEnd + 1, strData.length());
 				strData = firstPart + ' ' + secondPart;
 			}
@@ -49,8 +56,36 @@ public class RemoveTextBetweenTriangles implements Executer{
 	
 
 	public static void main(String[] args) {
-		String b = "anat<br><br><br>anat";
+		
+		Template t = new Template();
+		t.setTemplate("http://en.wikipedia.org/wiki/&");
+		t.setWildCard("&");
+		FlowData url = t.execute(new FlowData ("Nail_(anatomy)"));
+		
+		GetHTMLWithURL getHTML = new GetHTMLWithURL();
+		FlowData htmlCodeOfURL = getHTML.execute(url);
+		
+		GetIndex afterIndex = new GetIndex();
+		afterIndex.setFind("/table");
+		FlowData indexAfterDelimiter = afterIndex.execute(htmlCodeOfURL);
+		
+		StringCutter stringCutterAfter = new StringCutter();
+		stringCutterAfter.setDirection("after");
+		FlowData htmlWithoutBeggining = 
+				stringCutterAfter.execute(new FlowData[]{htmlCodeOfURL, indexAfterDelimiter});
+	
+		GetIndex beforeIndex = new GetIndex();
+		beforeIndex.setFind("See_also");
+		FlowData indexBeforeDelimiter = beforeIndex.execute(htmlWithoutBeggining);
+		
+		StringCutter stringCutterBefore = new StringCutter();
+		stringCutterBefore.setDirection("before");
+		FlowData goodHTML =
+				stringCutterBefore.execute(new FlowData[]{htmlWithoutBeggining, indexBeforeDelimiter});
+		
+		//FlowData data = new GetHTMLWithURL().execute(new FlowData(url));
 		RemoveTextBetweenTriangles a = new RemoveTextBetweenTriangles();
-		a.execute(new FlowData((Object)b));
+		FlowData awesomeHTML = a.execute(goodHTML);
+		System.out.println(awesomeHTML.getData());
 	}
 }

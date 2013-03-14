@@ -19,7 +19,7 @@ public class SendMail implements Predicate{
 		this.toEmailAddress = toEmailAddress;
 	}
 
-	public String getFromEmalAddress() {
+	public String getFromEmailAddress() {
 		return fromEmailAddress;
 	}
 
