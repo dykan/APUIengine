@@ -11,5 +11,6 @@ public class mainTester {
 	public static void main(String[] args) {
 		Engine engine = new Engine("src\\generated\\flow.xml");
 		FlowData data = engine.run();
+		System.out.println(data.getData().toString());
 	} 
 }
