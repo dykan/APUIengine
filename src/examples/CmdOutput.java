@@ -2,9 +2,10 @@ package examples;
 
 import types.Executer;
 import types.FlowData;
+import types.MultipleExecuter;
 
 
-public class CmdOutput implements Executer {
+public class CmdOutput implements MultipleExecuter {
 
 	@Override
 	public String getLabel() {
@@ -22,9 +23,8 @@ public class CmdOutput implements Executer {
 	}
 
 	@Override
-	public FlowData execute(FlowData data) {
-		System.out.println(data.getData().toString());
-		return data;
+	public FlowData execute(FlowData[] data) {
+		return new UniteStrings().execute(data); 
 	}
 
 
