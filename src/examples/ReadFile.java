@@ -8,7 +8,7 @@ import java.io.IOException;
 import types.Executer;
 import types.FlowData;
 
-public class ConvertFileToString implements Executer {
+public class ReadFile implements Executer {
 
 	public String fileName;
 	
@@ -22,7 +22,7 @@ public class ConvertFileToString implements Executer {
 
 	@Override
 	public String getLabel() {
-		return "Number of words in a file";
+		return "read file";
 	}
 
 	@Override

@@ -10,4 +10,8 @@ public class FlowData {
 	public Object getData(){
 		return data;
 	}
+	
+	public void setData(Object obj){
+		data = obj;
+	}
 }
