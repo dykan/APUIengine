@@ -56,12 +56,12 @@ public class Engine {
 			// check if exec or predicate
 			if (curr instanceof NodeExecuter){
 				FlowData data;
-				// simple or root 
-				if (curr.getPrevs().size() <= 1){
-					data = ((Executer)impl).execute(fatherData[0]);
 				// multiple data  
-				} else {
+				if (curr.getPrevs().size() > 1 || curr.getId().equals(OUTPUT_POINT)){
 					data = ((MultipleExecuter)impl).execute(fatherData);
+				// simple or root
+				} else {
+					data = ((Executer)impl).execute(fatherData[0]);
 				}
 				
 				// save result
@@ -70,7 +70,7 @@ public class Engine {
 			} else if (curr instanceof NodePredicate){
 				boolean result;
 				// multiple data  or output
-				if (curr.getPrevs().size() > 1 || curr.getId().equals(OUTPUT_POINT) ){
+				if (curr.getPrevs().size() > 1  ){
 					result = ((MultiplePredicate)impl).execute(fatherData);
 				// simple or root
 				} else {
