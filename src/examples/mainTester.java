@@ -9,9 +9,8 @@ public class mainTester {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Engine engine = new Engine("c:\\flow.xml");
+		Engine engine = new Engine("src\\generated\\flow.xml");
 		FlowData data = engine.run();
-		//System.out.println(data.getData().toString());
-	}
-
+		System.out.println(data.getData().toString());
+	} 
 }

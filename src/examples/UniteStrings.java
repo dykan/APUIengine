@@ -18,8 +18,13 @@ public class UniteStrings implements MultipleExecuter{
 
 	@Override
 	public FlowData execute(FlowData[] data) {
-		String unitedStrings = data[0].getData().toString() + data[1].getData().toString();
-		return null;
+		StringBuilder bld = new StringBuilder();
+		for (FlowData curr : data){
+			if (curr != null){
+				bld.append((String)curr.getData());
+			}
+		}
+		return new FlowData(bld.toString());
 	}
 
 	@Override

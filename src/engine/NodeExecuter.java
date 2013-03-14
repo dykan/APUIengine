@@ -12,7 +12,9 @@ public class NodeExecuter extends NodeCommand{
 
 	ArrayList<NodeCommand> outEdges = new ArrayList<NodeCommand>();
 
-	public void addNext(NodeCommand curr) {
-		outEdges.add(curr);
+	public void addNext(NodeCommand son) {
+		outEdges.add(son);
+		// add me to his prevs
+		son.getPrevs().add(this);
 	}
 }

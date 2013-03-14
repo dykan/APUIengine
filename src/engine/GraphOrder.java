@@ -3,31 +3,30 @@ package engine;
 import generated.Flow;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
-import types.Predicate;
 
 public class GraphOrder {
-	
 	private GraphCommand graph;
 	private Queue<NodeCommand> queue;
 	private Set<NodeCommand> evaluated;
+	private Set<NodeCommand> inPath;
 	private NodePredicate lastPredicate = null;
 	public GraphOrder(GraphCommand graph) {
 		this.graph = graph;
 		this.evaluated = new HashSet<>();
-		queue = new LinkedBlockingQueue<NodeCommand>();
+		this.queue = new LinkedList<NodeCommand>();
+		this.inPath = new HashSet<NodeCommand>();
 		this.fillStarts();
 	}
-	
+
 	public GraphOrder(Flow flow) {
 		this(new GraphCommand(flow));
 	}
 
 	public NodeCommand getNext() {
+		inPath.clear();
 		// check if we are waiting for answer from predicate
 		if (lastPredicate !=null){
 			if(lastPredicate.getAnswer())
@@ -41,7 +40,7 @@ public class GraphOrder {
 			lastPredicate = null;
 		}
 		NodeCommand current = queue.poll();
-		if(NodeExecuter.class.isInstance(current))
+		if(current instanceof NodeExecuter)
 		{
 			this.evaluated.add(current);
 			for(NodeCommand next : ((NodeExecuter)current).outEdges)
@@ -52,41 +51,49 @@ public class GraphOrder {
 				}
 			}
 		}
-		else if(NodePredicate.class.isInstance(current))
+		else if(current instanceof NodePredicate)
 		{
 			lastPredicate = (NodePredicate)current;
 		}
-		
+
 		return current;
 	}
-	
+
 	private boolean isRoot(NodeCommand command)
 	{
 		return (command.prevEdges.isEmpty());
 	}
-	
+
 	private boolean canRun(NodeCommand command)
 	{
-		if(command.executed)
-		{
-			return true;
-		}
-		else if(isRoot(command))
-		{
-			return false;
+		if(!inPath.contains(command))
+		{	
+			inPath.add(command);
+			if(evaluated.contains(command))
+			{
+				return true;
+			}
+			else if(isRoot(command))
+			{
+				return false;
+			}
+			else
+			{
+				for(NodeCommand prev : command.prevEdges)
+				{
+					if(!canRun(prev))
+						return false;
+				}
+
+				return true;
+			}
 		}
 		else
 		{
-			for(NodeCommand prev : command.prevEdges)
-			{
-				if(!canRun(prev))
-					return false;
-			}
-			
 			return true;
 		}
 	}
-	
+
 	private void fillStarts() {
 		for (NodeCommand cmd : graph.vertices.values()) {
 			if(isRoot(cmd)) {

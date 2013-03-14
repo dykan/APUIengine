@@ -1,6 +1,8 @@
 <flow>
     <command id="1" type="input" x="1" y="2">
-        <prev/>
+        <prev>
+        	<id>5</id>
+        </prev>
         <next>
             <id>2</id>
         </next>
@@ -21,8 +23,8 @@
 			<attr name="condition" value="true"/>
         </attributes>
     </command>
-	 <command id="3" type="Get the string I've entered" x="1" y="2">
-        <prev>
+	<command id="3" type="Get the string I've entered" x="1" y="2">
+    	<prev>
 			<id>2</id>
 		</prev>
         <next>
@@ -32,15 +34,24 @@
             <attr name="GivenString" value="welcome"/>
         </attributes>
 	</command>
-	 <command id="4" type="Get the string I've entered" x="1" y="2">
+	<command id="4" type="cmdOutput" x="1" y="2">
         <prev>
-			<id>2</id>
-		</prev>
+        	<id>2</id>
+        </prev>
         <next>
-            <id>0</id>
+            <id>1</id>
         </next>
 		<attributes>
-            <attr name="GivenString" value="tipesh"/>
-        </attributes>
-	</command>
+			<attr name="message" value="wrong! try again"/>
+		</attributes>
+    </command>
+    <command id="5" type="cmdOutput" x="1" y="2">
+        <prev/>
+        <next>
+            <id>1</id>
+        </next>
+		<attributes>
+			<attr name="message" value="Hello :)"/>
+		</attributes>
+    </command>
 </flow>
