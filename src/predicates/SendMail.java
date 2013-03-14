@@ -94,5 +94,4 @@ public class SendMail implements Predicate{
 	    .send();
 		return true;
 	}
-
 }

@@ -31,9 +31,9 @@ public class AddStringToStringsList implements Executer {
 	@Override
 	public FlowData execute(FlowData data) {
 		ArrayList<String> arrStrings = new ArrayList<String>();
-		arrStrings = (ArrayList<String>)(Object)data;
+		arrStrings = (ArrayList<String>)data.getData();
 		arrStrings.add(stringToAdd);
-		return new FlowData((Object)arrStrings);
+		return new FlowData(arrStrings);
 	}
 
 	@Override

@@ -23,8 +23,8 @@ public class GetHTMLWithURL implements Executer{
 
 	@Override
 	public FlowData execute(FlowData data) {
-		String strURL = data.toString();
-		return new FlowData((Object)getUrlSource(strURL));
+		String strURL = data.getData().toString();
+		return new FlowData(getUrlSource(strURL));
 	}
 
 	@Override

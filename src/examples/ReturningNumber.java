@@ -22,7 +22,7 @@ public class ReturningNumber implements Executer {
 
 	@Override
 	public Class[] getInputTypes() {
-		return new Class[]{int.class};
+		return null;
 	}
 
 	@Override

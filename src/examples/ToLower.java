@@ -17,7 +17,7 @@ public class ToLower implements Executer{
 
 	@Override
 	public FlowData execute(FlowData data) {
-		return new FlowData(data.toString().toLowerCase());
+		return new FlowData(data.getData().toString().toLowerCase());
 	}
 
 	@Override

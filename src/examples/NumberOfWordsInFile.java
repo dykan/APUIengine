@@ -17,7 +17,7 @@ public class NumberOfWordsInFile implements Executer{
 
 	@Override
 	public FlowData execute(FlowData data) {
-		String strData = data.toString();
+		String strData = data.getData().toString();
 		int numberOfWords = 1;
 
         for (int i = 0; i < strData.length(); i++) 

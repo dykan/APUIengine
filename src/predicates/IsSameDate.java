@@ -31,7 +31,7 @@ public class IsSameDate implements Predicate{
 	@Override
 	public boolean execute(FlowData data) {
 		Date givenDate = Date.valueOf(strDate);
-		Date dateData = Date.valueOf(data.toString());
+		Date dateData = Date.valueOf(data.getData().toString());
 		return dateData.equals(givenDate);
 	}
 

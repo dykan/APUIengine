@@ -9,7 +9,7 @@ public class IsUpper implements Predicate {
 
 	@Override
 	public boolean execute(FlowData data) {
-		String strData = (String) data.getData();
+		String strData = data.getData().toString();
 		return (strData.matches("[A-Z]"));
 	}
 

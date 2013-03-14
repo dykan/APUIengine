@@ -33,13 +33,13 @@ public class WriteToFile implements Executer{
         try{
             FileWriter fstream = new FileWriter(fileName, true);
             BufferedWriter fbw = new BufferedWriter(fstream);
-            fbw.write(data.toString());
+            fbw.write(data.getData().toString());
             fbw.newLine();
             fbw.close();
         }catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-		return data;
+		return new FlowData(data);
 	}
 
 	@Override

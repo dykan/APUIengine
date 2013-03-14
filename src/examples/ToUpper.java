@@ -17,7 +17,7 @@ public class ToUpper implements Executer{
 
 	@Override
 	public FlowData execute(FlowData data) {
-		return new FlowData(data.toString().toUpperCase());
+		return new FlowData(data.getData().toString().toUpperCase());
 	}
 
 	@Override

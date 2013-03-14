@@ -23,8 +23,8 @@ public class UniteFiles implements MultipleExecuter {
 
 	@Override
 	public FlowData execute(FlowData[] data) {
-		String uniteFiles = GeneralUtils.convertFileToString(data[0].toString()) + 
-							GeneralUtils.convertFileToString(data[1].toString());
+		String uniteFiles = GeneralUtils.convertFileToString(data[0].getData().toString()) + 
+							GeneralUtils.convertFileToString(data[1].getData().toString());
 		return new FlowData(uniteFiles);
 	}
 
