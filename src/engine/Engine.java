@@ -54,10 +54,10 @@ public class Engine {
 			BasicCommand impl = curr.getImpl();
 			
 			// check if exec or predicate
-			if (impl instanceof Executer){
+			if (curr instanceof NodeExecuter){
 				FlowData data;
-				// simple or root or end
-				if (curr.getPrevs().size() <= 1 || curr.getId().equals(OUTPUT_POINT)){
+				// simple or root 
+				if (curr.getPrevs().size() <= 1){
 					data = ((Executer)impl).execute(fatherData[0]);
 				// multiple data  
 				} else {
@@ -67,14 +67,14 @@ public class Engine {
 				// save result
 				dataMap.put(curr.getId(), data);
 				
-			} else if (impl instanceof Predicate){
+			} else if (curr instanceof NodePredicate){
 				boolean result;
-				// simple or root
-				if (curr.getPrevs().size() <= 1){
-					result = ((Predicate)impl).execute(fatherData[0]);
-				// multiple data  
-				} else {
+				// multiple data  or output
+				if (curr.getPrevs().size() > 1 || curr.getId().equals(OUTPUT_POINT) ){
 					result = ((MultiplePredicate)impl).execute(fatherData);
+				// simple or root
+				} else {
+					result = ((Predicate)impl).execute(fatherData[0]);
 				}
 				// save answer
 				((NodePredicate)curr).setAnswer(result);
