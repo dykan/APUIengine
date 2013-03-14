@@ -8,10 +8,11 @@ import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class GraphOrder {
-	
+
 	private GraphCommand graph;
 	private Queue<NodeCommand> queue;
 	private Set<NodeCommand> evaluated;
+	private Set<NodeCommand> inPath;
 	private NodePredicate lastPredicate = null;
 	public GraphOrder(GraphCommand graph) {
 		this.graph = graph;
@@ -19,7 +20,7 @@ public class GraphOrder {
 		queue = new LinkedBlockingQueue<NodeCommand>();
 		this.fillStarts();
 	}
-	
+
 	public GraphOrder(Flow flow) {
 		this(new GraphCommand(flow));
 	}
@@ -53,37 +54,45 @@ public class GraphOrder {
 		{
 			lastPredicate = (NodePredicate)current;
 		}
-		
+
 		return current;
 	}
-	
+
 	private boolean isRoot(NodeCommand command)
 	{
 		return (command.prevEdges.isEmpty());
 	}
-	
+
 	private boolean canRun(NodeCommand command)
 	{
-		if(evaluated.contains(command))
-		{
-			return true;
-		}
-		else if(isRoot(command))
-		{
-			return false;
+		if(!inPath.contains(command))
+		{	
+			inPath.add(command);
+			if(evaluated.contains(command))
+			{
+				return true;
+			}
+			else if(isRoot(command))
+			{
+				return false;
+			}
+			else
+			{
+				for(NodeCommand prev : command.prevEdges)
+				{
+					if(!canRun(prev))
+						return false;
+				}
+
+				return true;
+			}
 		}
 		else
 		{
-			for(NodeCommand prev : command.prevEdges)
-			{
-				if(!canRun(prev))
-					return false;
-			}
-			
 			return true;
 		}
 	}
-	
+
 	private void fillStarts() {
 		for (NodeCommand cmd : graph.vertices.values()) {
 			if(isRoot(cmd)) {
