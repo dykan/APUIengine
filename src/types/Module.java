@@ -2,9 +2,16 @@ package types;
 
 import java.util.HashMap;
 
+import engine.GraphCommand;
+import examples.PipeEnd;
+
 public abstract class Module {
 	
 	HashMap<String, Class<? extends BasicCommand>> commandMap = new HashMap<>();
+	
+	public Module(){
+		commandMap.put(GraphCommand.PIPE_END_COMMAND, PipeEnd.class);
+	}
 	
 	public void add(BasicCommand command) {
 		this.add(command.getLabel(), command.getClass());
