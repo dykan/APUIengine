@@ -13,6 +13,7 @@ import types.ImplGetter;
 
 public class GraphCommand {
 	
+	private static final int END_COMMAND = 0;
 	HashMap<Integer, NodeCommand> vertices;
 	ImplGetter getter= new ImplGetter();
 	Flow flow;
@@ -41,10 +42,15 @@ public class GraphCommand {
 				falseNode.addPrev(currGraphNode);
 			} else {
 				NodeExecuter nodeExecuter = (NodeExecuter)currGraphNode;
+				// check if end of graph
+				if(currXmlNode.getNext() == null){
+					NodeCommand end = createSonById(END_COMMAND);
+					nodeExecuter.addNext(end);
+					
+				}
 				for(Integer currId : currXmlNode.getNext().getId()){
 					NodeCommand son = createSonById(currId);
 					nodeExecuter.addNext(son);
-					son.addPrev(currGraphNode);
 				}
 			}
 			
@@ -58,7 +64,7 @@ public class GraphCommand {
 
 	private void addOutput() {
 		Command output = new Command();
-		output.setId(0);
+		output.setId(END_COMMAND);
 		output.setType("output");
 		Next next = new Next();
 		output.setNext(next);
