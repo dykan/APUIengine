@@ -19,6 +19,6 @@ public class UniteStrings implements MultipleExecuter{
 	@Override
 	public FlowData execute(FlowData[] data) {
 		String unitedStrings = data[0].toString() + data[1].toString();
-		return null;
+		return new FlowData(unitedStrings);
 	}
 }

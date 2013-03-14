@@ -13,5 +13,6 @@ public class BasicModule extends Module {
 		this.add(new IsUpper());
 		this.add(new IsSameString());
 		this.add(new ReturningString());
+		this.add(new UniteStrings());
 	}
 }

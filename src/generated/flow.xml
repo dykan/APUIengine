@@ -43,7 +43,7 @@
             <attr name="GivenString" value="tipesh"/>
         </attributes>
 	</command>
-	<command id="5" type="Unify" x="1" y="2">
+	<command id="5" type="Unite strings" x="1" y="2">
 		<prev>
 			<id>3</id>
 			<id>4</id>
