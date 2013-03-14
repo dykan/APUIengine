@@ -20,6 +20,7 @@ public class GraphCommand {
 	
 
 	public static String CONDITION_ATTR = "condition";
+	public static String PIPE_END_COMMAND = "pipeEnd";
 	
 	public GraphCommand(Flow flow) {
 		
@@ -65,7 +66,7 @@ public class GraphCommand {
 	private void addOutput() {
 		Command output = new Command();
 		output.setId(END_COMMAND);
-		output.setType("output");
+		output.setType(PIPE_END_COMMAND);
 		Next next = new Next();
 		output.setNext(next);
 		flow.getCommand().add(output);

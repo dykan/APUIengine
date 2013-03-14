@@ -5,11 +5,11 @@ import types.FlowData;
 import types.MultipleExecuter;
 
 
-public class CmdOutput implements MultipleExecuter {
+public class PipeEnd implements MultipleExecuter {
 
 	@Override
 	public String getLabel() {
-		return "output";
+		return "pipeEnd";
 	}
 
 	@Override

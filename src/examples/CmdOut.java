@@ -4,7 +4,7 @@ import types.Executer;
 import types.FlowData;
 
 
-public class cmdOut implements Executer{
+public class CmdOut implements Executer{
 
 	private String message;
 	
